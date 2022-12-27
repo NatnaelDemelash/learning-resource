@@ -1,6 +1,5 @@
 <template>
   <base-card>
-    <h3>Add New Resource</h3>
     <form @submit.prevent="submitData">
       <div class="form-control">
         <label for="title">Title</label>
@@ -19,34 +18,29 @@
         <label for="link">Link</label>
         <input id="link" name="link" type="url" ref="linkInput" />
       </div>
+      <div>
+        <base-button type="submit">Add Resource</base-button>
+      </div>
     </form>
-    <base-button type="submit" @click="addResource">Add Resource</base-button>
   </base-card>
 </template>
 
 <script>
-import BaseButton from "../UI/BaseButton.vue";
 export default {
   inject: ["addResource"],
-
   methods: {
     submitData() {
       const enteredTitle = this.$refs.titleInput.value;
-      const enteredDesc = this.$refs.descInput.value;
-      const enteredurl = this.$refs.linkInput.value;
+      const enteredDescription = this.$refs.descInput.value;
+      const enteredUrl = this.$refs.linkInput.value;
 
-      this.addResource(enteredTitle, enteredDesc, enteredurl);
+      this.addResource(enteredTitle, enteredDescription, enteredUrl);
     },
   },
 };
 </script>
 
 <style scoped>
-h3 {
-  text-align: center;
-  font-family: "Dosis";
-}
-
 label {
   font-weight: bold;
   display: block;
